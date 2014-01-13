@@ -1,4 +1,4 @@
-CFLAGS = -g -Wall -Wextra -Isrc  $(OPTFLAGS)
+CFLAGS = -g -Wall -Wextra -Isrc $(OPTFLAGS)
 LIBS = -ldl $(OPTLIBS)
 PREFIX ?= /usr/local
 
