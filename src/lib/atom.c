@@ -50,14 +50,14 @@ const char *atom_int(long n)
     }
 
     do {
-        *--s = m % 10 + '\0';
+        *--s = m % 10 + '0';
     } while ((m /= 10) > 0);
     
     if (n < 0) {
         *--s = '-';
     }
 
-    return atom_new(s, sizeof(str) - (str-s));
+    return atom_new(s, sizeof(str) - (s-str));
 }
 
 /* hash function 
@@ -128,8 +128,22 @@ int atom_length(const char *str)
         }
     }
 
-    log_error("atom_length: *str* is not an existing atom\n");
+    log_err("atom_length: *str* is not an existing atom\n");
     assert(0);  /* indicates that str is not an existing atom */
 
     return 0;
+}
+
+void print_atom_table()
+{
+    struct atom_t *p;
+    int i;
+    int nelts = (sizeof(buckets)/sizeof(buckets[0]));
+
+    for (i = 0; i < nelts; i++) {
+        int j = 0;
+        for (p = buckets[i]; p; p = p->link, j++) {
+            log_info("buckets[%d][%d] = %s\n", i, j, p->str);
+        }
+    }
 }

@@ -43,4 +43,7 @@ extern const char *atom_string(const char *str);
  */
 extern const char *atom_int(long n);
 
+/* for debug */
+extern void print_atom_table();
+
 #endif /* end of include guard: ATOM_H */

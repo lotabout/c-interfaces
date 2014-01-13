@@ -15,7 +15,7 @@
 #define log_print(fmt, args...) \
     fprintf(stderr, "(%s:%d:) " fmt, __FILE__, __LINE__, ##args);
 
-#define log_error(fmt, args...) \
+#define log_err(fmt, args...) \
     fprintf(stderr, "[ERROR] (%s:%d:) " fmt, __FILE__, __LINE__, ##args);
 
 #define log_warn(fmt, args...) \
