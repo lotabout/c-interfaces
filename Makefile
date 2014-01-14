@@ -42,9 +42,10 @@ $(EXE_OBJS): %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 $(EXES): $(BINDIR)/% : $(SRCDIR)/%.o
-	$(CC) $(CFLAGS) $(LIBS) -o $@ $^
+	$(CC) $^ $(CFLAGS) $(LIBS) $(LIB_TARGET) -o $@
 
 # additional pre-requsites
+$(BINDIR)/wf: $(SRCDIR)/getword.o
 
 #----------------------------------------------------------------------
 # run the tests
@@ -80,5 +81,5 @@ install: all
 # The Target Build
 all: $(LIB_TARGET) $(LIB_SO_TARGET) tests $(EXES)
 
-dev: CFLAGS = -g -Wall -Isrc -Wall -Wextra $(OPTLIBS)
+dev: CFLAGS = -g -Wall -Ilib -Wall -Wextra $(OPTLIBS)
 dev: all
