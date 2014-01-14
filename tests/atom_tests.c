@@ -1,5 +1,5 @@
 #include "minunit.h"
-#include <lib/atom.h>
+#include <atom.h>
 
 const char *a = "abcdefg";
 const char *b = "abcdefg";

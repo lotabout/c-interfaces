@@ -1,6 +1,6 @@
 #include "minunit.h"
 #include <stdbool.h>
-#include <lib/list.h>
+#include <list.h>
 
 
 int array[] = {0, 1, 2, 3, 4, 5, 6, 7, 8};
