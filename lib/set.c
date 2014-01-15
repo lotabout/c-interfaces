@@ -38,7 +38,7 @@ T set_new(int hint, int cmp(const void *a, const void *b),
     static int primes[] = {509, 509, 1021, 2053, 4093, 8191, 16381, 32771,
         65521, INT_MAX};
 
-    assert(hint > 0);
+    assert(hint >= 0);
     for (i = 1; primes[i] < hint; i++) {
         /* pass */
     }

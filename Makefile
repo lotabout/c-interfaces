@@ -33,7 +33,7 @@ build:
 #----------------------------------------------------------------------
 BINDIR=./bin
 SRCDIR=./src
-EXES = wf
+EXES = wf xref
 EXES := $(addprefix $(BINDIR)/, $(EXES))
 EXE_SRCS = $(wildcard src/*.c)
 EXE_OBJS = $(patsubst %.c, %.o, $(EXE_SRCS))
@@ -46,6 +46,7 @@ $(EXES): $(BINDIR)/% : $(SRCDIR)/%.o
 
 # additional pre-requsites
 $(BINDIR)/wf: $(SRCDIR)/getword.o
+$(BINDIR)/xref : $(SRCDIR)/getword.o
 
 #----------------------------------------------------------------------
 # run the tests
