@@ -110,7 +110,7 @@ void xref(const char *name, FILE *fp, table_t identifiers)
         /* add linenum to set, if necessary */
         int *p = &linenum;
         if (!set_member(set, p)) {
-            p = (unsigned *)zalloc(sizeof(*p));
+            p = (int *)zalloc(sizeof(*p));
             *p = linenum;
             set_put(set, p);
         }
@@ -124,9 +124,29 @@ void print_set(set_t set)
     void **lines = set_to_array(set, NULL);
     qsort(lines, set_length(set), sizeof(*lines), cmp_int);
 
-    for (i=0; lines[i]; i++) {
-        printf(" %d", *(int *)lines[i]);
+    /*for (i=0; lines[i]; i++) {*/
+        /*printf(" %d", *(int *)lines[i]);*/
+    /*}*/
+    /* join consecutive lines in the output 
+     * 7 8 9 10 11 16 18 20 21 => 7-11 16 18 20-21*/
+    char c = '\0'; /* the delimiter before numbers */
+    for (i = 1; lines[i]; i++) {
+        if (*(int *)lines[i] == *(int *)lines[i-1] + 1) {
+            if (c != '-') {
+                printf("%c", c);
+                printf("%d", *(int *)lines[i-1]);
+                c = '-';
+            }
+            continue;
+        } else {
+            printf("%c", c);
+            printf("%d", *(int *)lines[i-1]);
+            c = ' ';
+        }
     }
+    printf("%c", c);
+    printf("%d", *(int *)lines[i-1]);
+    
     zfree(lines);
 }
 
