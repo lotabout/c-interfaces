@@ -33,7 +33,7 @@ void vfree(const void *key, void *val)
 
 void wf(char *name, FILE *fp) 
 {
-    struct table_t *table = table_new(0, NULL, NULL);
+    table_t table = table_new(0, NULL, NULL);
     char buf[BUFSIZ];
 
     while (getword(fp, buf, sizeof(buf), first, rest)) {
