@@ -105,6 +105,7 @@ char *test_length()
 
 void addone(void **x, void *cl) 
 {
+    (void)cl;   /* cl not used, supress warning */
     int *tmp = (int *)(*x);
     *tmp = *tmp +1;
 }

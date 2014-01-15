@@ -106,6 +106,7 @@ char *test_member_put_remove()
 
 void add(const void *data, void *cl)
 {
+    (void)cl;   /* cl not used, supress warning */
     int *p = (int *)data;
     *p *= 2;
 }
@@ -133,6 +134,7 @@ char *test_to_array()
 
 void print_int(const void *data, void *cl)
 {
+    (void)cl;   /* cl not used, supress warning */
     log_info("%s \n", (char *)data);
 }
 

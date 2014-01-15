@@ -105,6 +105,7 @@ char *test_put_get_remove()
 
 void add(const void *key, void **value, void *cl)
 {
+    (void)cl;   /* cl not used, supress warning */
     int *p = (int *) *value;
 
     *p = *p + *(int *)key; 

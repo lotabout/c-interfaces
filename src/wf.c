@@ -9,7 +9,7 @@
 #include <table.h>
 #include <mem.h>
 
-void wf(char *name, FILE *fp);
+void wf(const char *name, FILE *fp);
 
 int first(int c) 
 {
@@ -28,10 +28,11 @@ int cmp(const void *a, const void *b)
 
 void vfree(const void *key, void *val)
 {
+    (void)key;   /* key not used, supress warning */
     zfree(val);
 }
 
-void wf(char *name, FILE *fp) 
+void wf(const char *name, FILE *fp) 
 {
     table_t table = table_new(0, NULL, NULL);
     char buf[BUFSIZ];

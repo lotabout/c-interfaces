@@ -19,6 +19,7 @@
 #define RUN_TESTS(name) \
     int main(int argc, const char *argv[]) \
     { \
+        (void)argc; /* not used, supress warning */ \
         debug_print("\n===== RUNNING: %s\n", argv[0]); \
         printf("====\nRUNNING: %s\n", argv[0]); \
         char *result = name(); \
