@@ -14,3 +14,10 @@ void zfree(void *ptr)
     assert(ptr);
     free(ptr);
 }
+
+void *zcalloc(size_t nmemb, size_t size)
+{
+    void *p = calloc(nmemb, size);
+    assert(p);
+    return p;
+}

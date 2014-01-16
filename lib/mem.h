@@ -9,5 +9,6 @@
 #include <stdlib.h>
 void *zalloc(size_t size);
 void zfree(void *ptr);
+void *zcalloc(size_t nmemb, size_t size);
 
 #endif /* end of include guard: MEM_H */
