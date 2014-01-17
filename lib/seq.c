@@ -122,21 +122,17 @@ static void seq_expand(T seq)
 {
     /* alloc new memory for seq */
     int new_size = seq->nmemb * 2;
-    void **new = zcalloc(new_size, sizeof(*new));
-    zfree(seq->data);
-    seq->data = new;
+    void **new = (void **)zcalloc(new_size, sizeof(*new));
 
     /* copy old entries */
-
     /* [0 ...... head ........ nmem-1] */
     memcpy(new, &seq->data[seq->head], (seq->nmemb-seq->head)*sizeof(*seq->data));
-    memcpy(new+(seq->nmemb-seq->head), seq->data, seq->head * sizeof(*seq->data));
+    memcpy(&new[seq->nmemb-seq->head], seq->data, seq->head * sizeof(*seq->data));
 
     zfree(seq->data);
     seq->data = new;
-
     seq->nmemb = new_size;
-
+    seq->head = 0;
 }
 
 void *seq_addhi(T seq, void *x)

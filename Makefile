@@ -67,7 +67,7 @@ $(TESTS): %:%.c
 #----------------------------------------------------------------------
 # The Cleaner
 clean:
-	rm -rf build $(OBJS) $(TESTS)
+	rm -rf build $(LIB_OBJS) $(EXE_OBJS) $(TESTS)
 	rm -f tests/tests.log
 	find . -name "*.gc*" -exec rm {} \;
 	rm -rf `find . -name "*.dSYM" -print`
