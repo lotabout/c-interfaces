@@ -59,6 +59,7 @@ tests: CFLAGS += $(LIB_TARGET)
 tests: $(TESTS)
 	sh ./tests/runtests.sh
 
+$(TESTS): $(LIB_TARGET)
 $(TESTS): %:%.c
 	$(CC) $^ $(CFLAGS) $(LIBS) -o $@
 
