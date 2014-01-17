@@ -3,8 +3,8 @@
  */
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <assert.h>
-#include <malloc.h>
 
 #include "array.h"
 #include "mem.h"
